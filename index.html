@@ -15,11 +15,29 @@
             body {
                 padding-bottom: 20px;
             }
+
+            .vertical-text 
+            {
+              transform: rotate(-90deg);
+              transform-origin: left top 0;
+              float: left;
+            }
         </style>
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready( function () {
+            $('#graph-form').on('submit', function() {
+              var q1 = $('#q1').val();
+              $('#graph').html('<p>'+q1+'</p>');
+              return false;
+            });
+          });
+        </script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -36,19 +54,59 @@
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <div id="graph" class="col-md-4">
+          <p class="vertical-text">Hi im the graph</p>
+          <table class="table table-bordered">
+            <col style="width:10%">
+            <col style="width:45%">
+            <col style="width:45%">
+          <tr>
+
+            <th></th>
+            <th>Last</th>
+            <th>Age</th>
+          </tr>
+          <tr>
+            <td>Jill</td>
+            <td>Smith</td> 
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>Eve</td>
+            <td>Jackson</td> 
+            <td>94</td>
+          </tr> 
+          </table>
         </div>
       </div>
+      
+      <form role="form" id="graph-form">      
+        <div class="form-group">
+          <label for="q1">Important, non-urgent tasks:</label>
+          <textarea class="form-control" rows="5" id="q1"></textarea>
+        </div>
+         <div class="form-group">
+          <label for="q2">Important, urgent tasks:</label>
+          <textarea class="form-control" rows="5" id="q2"></textarea>
+        </div>       
+        <div class="form-group">
+          <label for="q3">Non-important, urgent tasks</label>
+          <textarea class="form-control" rows="5" id="q3"></textarea>
+        </div>
+         <div class="form-group">
+          <label for="q4">Non-important, non-urgent tasks</label>
+          <textarea class="form-control" rows="5" id="q4"></textarea>
+        </div>       
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+ 
 
       <hr>
 
       <footer>
         <p>by Evan Sendra</p>
       </footer>
-    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </div> <!-- /container -->        
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
 
         <script src="js/vendor/bootstrap.min.js"></script>
